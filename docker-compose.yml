@@ -1,0 +1,79 @@
+version: "3"
+
+volumes:
+  pgdata:
+    driver: local
+  redisdata:
+    driver: local
+
+services:
+
+  nginx:
+    build: 
+      context: ./nginx
+      dockerfile: Dockerfile
+      args:
+        - NGINX_IMAGE_VERSION
+    env_file:
+      - ./.env
+    depends_on:
+      - python
+    volumes:
+      - ./html:/srv/www/html
+      - ./logs:/srv/www/logs
+    networks:
+      - backend
+      - frontend
+
+  python:
+    build: 
+      context: ./python
+      dockerfile: Dockerfile
+      args:
+        - PYTHON_IMAGE_VERSION
+        - OS_DEPS
+        - PYTHON_OS_DEPS
+        - USER_NAME
+        - USER_ID
+        - HOME_DIR
+        - PIPENV_DEV
+    env_file:
+      - ./.env
+    depends_on:
+      - redis
+      - postgres
+    networks:
+      - backend
+
+  postgres:
+    build: 
+      context: ./postgres
+      dockerfile: Dockerfile
+      args:
+        - POSTGRES_IMAGE_VERSION
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    env_file:
+      - ./.env
+    networks:
+      - backend
+
+  redis:
+    build:
+      context: ./redis
+      dockerfile: Dockerfile
+      args:
+        - REDIS_IMAGE_VERSION
+    env_file:
+      - ./.env
+    volumes:
+      - redisdata:/data/bases
+    networks:
+      - backend
+
+networks:
+  frontend:
+    external:
+      name: proxy_proxy
+  backend:
+    driver: bridge

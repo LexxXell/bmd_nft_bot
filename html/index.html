@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+    <title>Connection checker</title>
+</head>
+
+<body>
+
+    <div class="--main">
+        <div>
+            <h1>Application connection status</h1>
+            <h2 id="info-header">No apps found</h2>
+        </div>
+        <div id="py-div" class="--hide">
+            <h3>Python</h3>
+            <p class="--p-err" id="api_py_info"></p>
+            <p class="--p-err" id="postgres_py_info"></p>
+            <p class="--p-err" id="redis_py_info"></p>
+        </div>
+        <div id="no-div" class="--hide">
+            <h3>NodeJS</h3>
+            <p id="api_no_info"></p>
+            <p id="postgres_no_info"></p>
+            <p class="--p-err" id="redis_no_info"></p>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+
+</body>
+
+</html>

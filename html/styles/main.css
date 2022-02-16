@@ -1,0 +1,80 @@
+@font-face {
+    font-family: "MainFont-Bo";
+    font-style: normal;
+    font-weight: 400;
+    src: local("AvianoWedge-Bo"), url("https://fonts.cdnfonts.com/s/20201/AvianoWedgeBo.woff") format("woff");
+}
+
+@font-face {
+    font-family: "MainFont-Th";
+    font-style: normal;
+    font-weight: 200;
+    src: local("AvianoWedge-Th"), url("https://fonts.cdnfonts.com/s/20201/AvianoWedgeTh.woff") format("woff");
+}
+
+::-webkit-scrollbar {
+    width: 0;
+}
+
+:root {
+    --body-bg: linear-gradient(45deg, #e7c174, #f768df);
+    --header-bg: #2e2f45;
+    --info-header-bg: #520229;
+    --scs-col: #0a4f1b;
+    --err-col: #a10d0d;
+}
+
+html {
+    font-family: "MainFont-Th";
+    font-size: 62.5%;
+    height: 100%;
+    background: var(--body-bg) fixed;
+}
+
+.--main {
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+h1,
+h2,
+h3 {
+    font-family: "MainFont-Th";
+    color: white;
+    display: table;
+    padding: 1% 2%;
+    background: var(--header-bg);
+}
+
+h1 {
+    font-size: 250%;
+    margin: 20pt auto;
+    text-align: center;
+    border-radius: 0pt 15pt;
+}
+
+h2 {
+    margin: 20pt auto;
+    border-radius: 0pt 12pt;
+    background: var(--info-header-bg);
+}
+
+h3 {
+    font-size: 150%;
+    margin: 20pt 0pt;
+    border-radius: 0pt 8pt;
+}
+
+p {
+    font-size: 14pt;
+    font-family: "MainFont-Bo";
+}
+
+.--p-err {
+    color: var(--err-col);
+}
+
+.--p-scs {
+    color: var(--scs-col);
+}
